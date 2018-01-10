@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 # Simple program to name your cats
 catNames = []
 while True:
