@@ -1,4 +1,3 @@
-print('Hello Cruel World!')
-print("This is My First Python Class")
-print(2 * 3)
-print('The end')
+name = "Mario Bros"
+greeting = "Good Morning"
+print(greeting + ' ' + name)
