@@ -1,4 +1,4 @@
 import requests
-payload = {'q': 'marcovnyc'}
+payload = {'q': 'chetan'} 
 r = requests.get('https://github.com/search', params=payload)
-print("Request URL:", r.response)
+print("Request URL:", r.url)
