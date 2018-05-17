@@ -4,5 +4,5 @@ name = input("Please enter your name:")
 print(greeting + ' ' + name)
 
 
-splitString = "This string has been \nsplit over\nseveral\nlines"
+splitString = "This coding class has been \nsplit very helpful\nI like it so far\nand will continue until the end!"
 print(splitString)
