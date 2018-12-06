@@ -1,0 +1,83 @@
+Using beutiful soup to read an html file 
+
+╚>$ python
+Python 2.7.13 (default, Sep 26 2018, 18:42:22) 
+[GCC 6.3.0 20170516] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import bs4
+>>> file = open('python.html')
+>>> soup = bs4.BeatifulSoup(file, "lxml")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'module' object has no attribute 'BeatifulSoup'
+>>> soup = bs4.BeautifulSoup(file, "lxml")
+>>> print "BeautifulSoup Object:", type(soup)
+BeautifulSoup Object: <class 'bs4.BeautifulSoup'>
+>>> print soup.find_all('a')
+[<a href="https://facebook.com">here</a>]
+>>> print soup.find_all('strong')
+[<strong>Friends</strong>]
+>>> print soup.find('div', {"id":"inventor"})
+<div id="inventor">Mark Zuckerberg</div>
+>>> print soup.select('#inventor')
+[<div id="inventor">Mark Zuckerberg</div>]
+>>> soup.select('.wow')
+[<p class="wow"> Your gateway to social web! </p>]
+>>> soup.select('#inventor')
+[<div id="inventor">Mark Zuckerberg</div>]
+>>> print "Facebook URL: ", soup.find_all('a') [0] ['href']
+Facebook URL:  https://facebook.com
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"}).text
+Inventor:  Mark Zuckerberg
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"})
+Inventor:  <div id="inventor">Mark Zuckerberg</div>
+>>> print "Facebook URL: ", soup.find_all('a').text
+Facebook URL: 
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/pi/.virtualenvs/python2_py/local/lib/python2.7/site-packages/bs4/element.py", line 1884, in __getattr__
+    "ResultSet object has no attribute '%s'. You're probably treating a list of items like a single item. Did you call find_all() when you meant to call find()?" % key
+AttributeError: ResultSet object has no attribute 'text'. You're probably treating a list of items like a single item. Did you call find_all() when you meant to call find()?
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"})
+Inventor:  <div id="inventor">Mark Zuckerberg</div>
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"}).json
+Inventor:  None
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"}).html
+Inventor:  None
+>>> print "Inventor: ", soup.find('div', {"id":"inventor"}).text
+Inventor:  Mark Zuckerberg
+>>> print "Facebook URL: ", soup.find_all('a') [0] ['href']
+Facebook URL:  https://facebook.com
+>>> print "Span content:", soup.select('span') [0].getText()
+Span content: You know it's easy to get intouch with
+           your Friends on web!
+>>> quit()
+(python2_py) ╔[pi@batserver:~/Development/penguin-code/automate-it/chapter-01]
+╚>$ cat python.html 
+     <html xmlns="http://www.w3.org/1999/html">
+     <head>
+         <title>Enjoy Facebook!</title>
+     </head>
+<body> <p>
+           <span>You know it's easy to get intouch with
+           your <strong>Friends</strong> on web!<br></span>
+           Click here <a href="https://facebook.com">here</a>
+           to sign up and enjoy<br>
+         </p>
+         <p class="wow"> Your gateway to social web! </p>
+         <div id="inventor">Mark Zuckerberg</div>
+         Facebook, a webapp used by millions
+     </body>
+     </html>
+(python2_py) ╔[pi@batserver:~/Development/penguin-code/automate-it/chapter-01]
+╚>$ 
+
+    ## Pay attention ##
+
+In this recipe, you learnt the skill of finding or selecting different HTML elements based on ID, CSS, or tags.
+In the second code example of this recipe, we used find_all('a') to get all the anchor elements from the HTML file. When we used the find_all() method, we got multiple instances of the match as an array. The select() method helps you reach the element directly.
+          [ 22 ]
+Working with the Web
+ We also used find('div', <divId>) or select(<divId>) to select HTML elements by div Id. Note how we selected the inventor element with div ID #inventor in two ways using the find() and select() methods. Actually, the select method can also be used as select(<class-name>) to select HTML elements with a CSS class name. We used this method to select element wow in our example.
+In the third code example, we searched for all the anchor elements in the HTML page and looked at the first index with soup.find_all('a')[0]. Note that since we have only one anchor tag, we used the index 0 to select that element, but if we had multiple anchor tags, it could be accessed with index 1. Methods like getText() and attributes like text (as seen in the preceding examples) help in extracting the actual content from the elements.
+
