@@ -2,7 +2,7 @@
 """
 Created on Thu Jun  1 23:12:51 2017
 Vowels Code
-@author: mmaldonado
+@author: mmaldonadoc
 """
 
 vowels = ['a', 'e', 'i', 'o', 'u']
