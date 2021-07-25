@@ -22,10 +22,6 @@ for letra in phrase:
 for letra in combination:
     new_combination.append(letra)
     print(new_combination)
-            
-            
-        
-
-
+    
 new_phrase = ''.join(new_combination)
 print(new_phrase)
