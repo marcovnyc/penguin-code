@@ -1,0 +1,8 @@
+setup.py
+mptpkg/mysay.py
+mptpkg/mysr.py
+mptpkg.egg-info/PKG-INFO
+mptpkg.egg-info/SOURCES.txt
+mptpkg.egg-info/dependency_links.txt
+mptpkg.egg-info/not-zip-safe
+mptpkg.egg-info/top_level.txt
